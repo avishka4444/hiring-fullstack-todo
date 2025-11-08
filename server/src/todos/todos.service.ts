@@ -62,7 +62,7 @@ export class TodosService {
     return new GetTodosResponseDto(count, todos);
   }
 
-  async getOne(id: string) {
+  async toggleDone(id: string) {
     const todo = await this.prisma.todo.findUnique({
       where: { id },
     });
@@ -70,12 +70,6 @@ export class TodosService {
     if (!todo) {
       throw new NotFoundException(`Todo with ID ${id} not found`);
     }
-
-    return todo;
-  }
-
-  async toggleDone(id: string) {
-    const todo = await this.getOne(id); // Check if todo exists
 
     return this.prisma.todo.update({
       where: { id },

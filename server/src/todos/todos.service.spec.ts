@@ -218,37 +218,6 @@ describe('TodosService', () => {
     });
   });
 
-  describe('getOne', () => {
-    it('should return a todo by id', async () => {
-      const todoId = 'todo-id';
-      const mockTodo = {
-        id: todoId,
-        title: 'Test Todo',
-        description: 'Test Description',
-        done: false,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      };
-
-      mockPrismaService.todo.findUnique.mockResolvedValue(mockTodo);
-
-      const result = await service.getOne(todoId);
-
-      expect(mockPrismaService.todo.findUnique).toHaveBeenCalledWith({
-        where: { id: todoId },
-      });
-      expect(result).toEqual(mockTodo);
-    });
-
-    it('should throw NotFoundException if todo does not exist', async () => {
-      const todoId = 'non-existent-id';
-
-      mockPrismaService.todo.findUnique.mockResolvedValue(null);
-
-      await expect(service.getOne(todoId)).rejects.toThrow(NotFoundException);
-    });
-  });
-
   describe('toggleDone', () => {
     it('should toggle todo from false to true', async () => {
       const todoId = 'todo-id';

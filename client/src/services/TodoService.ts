@@ -15,12 +15,6 @@ export const todoApi = {
     return response.data.data;
   },
 
-  // Get a single TODO by ID
-  getTodoById: async (id: string): Promise<Todo> => {
-    const response = await axios.get<Todo>(`/todos/${id}`);
-    return response.data;
-  },
-
   // Create a new TODO
   createTodo: async (data: CreateTodoDto): Promise<Todo> => {
     const response = await axios.post<Todo>('/todos', data);

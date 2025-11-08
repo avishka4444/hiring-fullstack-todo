@@ -45,11 +45,11 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-[60vh] items-center justify-center">
-      <div className="card w-full max-w-md p-8">
+    <div className="flex min-h-[60vh] items-center justify-center px-4 py-8">
+      <div className="card w-full max-w-md p-6 sm:p-8">
         <div className="mb-6 text-center">
-          <h2 className="text-2xl font-bold text-white">Sign In</h2>
-          <p className="mt-2 text-sm text-slate-400">
+          <h2 className="text-xl sm:text-2xl font-bold text-white">Sign In</h2>
+          <p className="mt-2 text-xs sm:text-sm text-slate-400">
             Enter your credentials to access your account
           </p>
         </div>
@@ -69,7 +69,7 @@ const Login = () => {
               id="username"
               type="text"
               {...register("username")}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-white placeholder-slate-500 focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-400"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-white placeholder-slate-500 focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-400"
               placeholder="username"
             />
             {errors.username && (
@@ -86,7 +86,7 @@ const Login = () => {
                 id="password"
                 type={showPassword ? "text" : "password"}
                 {...register("password")}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 pr-10 text-white placeholder-slate-500 focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-400"
+                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 sm:px-4 py-2 sm:py-2.5 pr-10 text-sm sm:text-base text-white placeholder-slate-500 focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-400"
                 placeholder="••••••••"
               />
               <button
@@ -134,13 +134,13 @@ const Login = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full rounded-lg bg-primary-500 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary-900/40 transition hover:bg-primary-400 disabled:cursor-not-allowed disabled:bg-slate-700"
+            className="w-full rounded-lg bg-primary-500 px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-white shadow-lg shadow-primary-900/40 transition hover:bg-primary-400 disabled:cursor-not-allowed disabled:bg-slate-700"
           >
             {isLoading ? "Signing in..." : "Sign In"}
           </button>
         </form>
 
-        <div className="mt-6 text-center text-sm text-slate-400">
+        <div className="mt-6 text-center text-xs sm:text-sm text-slate-400">
           Don't have an account?{" "}
           <Link
             to="/register"

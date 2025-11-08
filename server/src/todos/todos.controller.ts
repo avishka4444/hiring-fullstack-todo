@@ -91,22 +91,6 @@ export class TodosController {
     return this.todosService.toggleDone(id);
   }
 
-  @Get(':id')
-  @ApiOperation({ summary: 'Get a TODO item by ID' })
-  @ApiParam({
-    name: 'id',
-    description: 'The ID of the TODO item to get',
-    type: String,
-  })
-  @ApiResponse({
-    status: 200,
-    description: 'The TODO item has been successfully retrieved',
-    type: TodoDto,
-  })
-  async getOne(@Param('id') id: string) {
-    return this.todosService.getOne(id);
-  }
-
   @Get()
   @ApiOperation({ summary: 'Get all TODO items with pagination' })
   @ApiResponse({

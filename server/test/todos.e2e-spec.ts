@@ -143,24 +143,6 @@ describe('Todos (e2e)', () => {
     });
   });
 
-  describe('/api/todos/:id (GET)', () => {
-    it('should get a todo by id', () => {
-      return request(app.getHttpServer())
-        .get(`/api/todos/${todoId}`)
-        .expect(200)
-        .expect((res) => {
-          expect(res.body).toHaveProperty('id', todoId);
-          expect(res.body).toHaveProperty('title');
-        });
-    });
-
-    it('should return 404 for non-existent todo', () => {
-      return request(app.getHttpServer())
-        .get('/api/todos/non-existent-id')
-        .expect(404);
-    });
-  });
-
   describe('/api/todos/:id (PUT)', () => {
     it('should update a todo successfully', () => {
       return request(app.getHttpServer())
@@ -237,12 +219,6 @@ describe('Todos (e2e)', () => {
     it('should return 404 when trying to delete non-existent todo', () => {
       return request(app.getHttpServer())
         .delete('/api/todos/non-existent-id')
-        .expect(404);
-    });
-
-    it('should return 404 when trying to get deleted todo', () => {
-      return request(app.getHttpServer())
-        .get(`/api/todos/${deleteTodoId}`)
         .expect(404);
     });
   });
